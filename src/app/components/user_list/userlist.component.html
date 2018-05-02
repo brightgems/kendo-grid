@@ -1,0 +1,220 @@
+
+<div class="container">
+
+    <div class="row">
+        <button class="btn btn-primary" (click)="getUsers()">Get User</button>
+        <button class="btn btn-success" (click)="AddUser()">Add New User</button>
+    </div>
+
+    <br><br>
+
+    <table class="table table-bordered" *ngIf="getuser">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Organisation</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let a of Users">
+            <td>{{ a.Name }}</td>
+            <td>{{ a.Email }}</td>
+            <td>{{ a.PhoneNo }}</td>
+            <td>{{ a.OrganizationName }}</td>
+            <td>
+                <i (click)="updateUser(a)" class="glyphicon glyphicon-edit clickable"></i>
+            </td>
+            <td>
+                <i (click)="deleteUser(a)" class="glyphicon glyphicon-remove clickable"></i>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+<!--AddUser-->
+    <div class="row" *ngIf="adduser">
+        <div class="col-md-6 well">
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input [(ngModel)]="createuser.Name"
+                           type="text"
+                           #ctrl="ngModel"
+                           class="form-control"
+                           placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email"
+                           [(ngModel)]="createuser.Email"
+                           #ctrl="ngModel"
+                           class="form-control"
+                           id="exampleInputEmail1"
+                           placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <select class="form-control" [(ngModel)]="createuser.CountryCode">
+                                <option [ngValue]="+91">India(+91)</option>
+                                <option [ngValue]="+971">UAE(+971)</option>
+                                <option [ngValue]="+1">USA(+1)</option>
+                                <option [ngValue]="+44">UK(+44)</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-8">
+                            <input class="form-control"
+                                   [(ngModel)]="createuser.PhoneNo"
+                                   #ctrl="ngModel"
+                                   Name="phoneNo"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Phone">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Login ID</label>
+                    <input class="form-control"
+                           [(ngModel)]="createuser.LoginId"
+                           #ctrl="ngModel"
+                           Name="loginId"
+                           type="text"
+                           class="form-control"
+                           placeholder="Login Id">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control"
+                           [(ngModel)]="createuser.LoginPassword"
+                           #ctrl="ngModel"
+                           Name="LoginPassword"
+                           type="password"
+                           class="form-control"
+                           placeholder="password">
+                </div>
+                <div>
+                    <label>Can save password on device ?</label>
+                    <select class="form-control" [(ngModel)]="createuser.CanSavePassword">
+                        <option [ngValue]="0">Disable</option>
+                        <option [ngValue]="1">Ask User</option>
+                        <option [ngValue]="2">Always</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="Save()">Save</button>
+                    <button type="button" class="btn btn-default btn-lg btn-block">Reset</button>
+                </div>
+        </div>
+        <div class="col-sm-5 col-sm-offset-1">
+            <div class="form-group">
+                <label *ngFor="let row of roles">
+                    <br /><input type="checkbox" (change)="abc(row)"> {{row.RoleName}}
+                </label><br>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container" *ngIf="updateUserInitialHide">
+    <!--UpdateUser-->
+    <div class="row">
+        <div class="col-md-6 well">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input [(ngModel)]="updateuser.Name"
+                       type="text"
+                       #ctrl="ngModel"
+                       class="form-control"
+                       placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email"
+                       [(ngModel)]="updateuser.Email"
+                       #ctrl="ngModel"
+                       class="form-control"
+                       placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <select class="form-control" [(ngModel)]="updateuser.CountryCode">
+                            <option [ngValue]="+91">India(+91)</option>
+                            <option [ngValue]="+971">UAE(+971)</option>
+                            <option [ngValue]="+1">USA(+1)</option>
+                            <option [ngValue]="+44">UK(+44)</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control"
+                               [(ngModel)]="updateuser.PhoneNo"
+                               #ctrl="ngModel"
+                               Name="phoneNo"
+                               type="text"
+                               class="form-control"
+                               placeholder="Phone">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label>Can save password on device ?</label>
+                <select class="form-control" [(ngModel)]="updateuser.CanSavePassword">
+                    <option [ngValue]="0">Disable</option>
+                    <option [ngValue]="1">Ask User</option>
+                    <option [ngValue]="2">Always</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-lg btn-block" (click)="SaveUpdatedData()">Save</button>
+                <button type="button" class="btn btn-default btn-lg btn-block">Reset</button>
+            </div>
+        </div>
+        <!--<div class="col-sm-5 col-sm-offset-1">-->
+            <!--<div class="form-group">-->
+                <!--<label *ngFor="let row of roles">-->
+                    <!--<br /><input type="checkbox" (change)="abc(row)"> {{row.RoleName}}-->
+                <!--</label><br>-->
+
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

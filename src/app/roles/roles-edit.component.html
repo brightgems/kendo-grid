@@ -1,0 +1,480 @@
+<style>
+
+    /* CSS used here will be applied after bootstrap.css */
+
+    /*.modal{*/
+    /*display: block !important;*/
+    /*}*/
+    .floatleft{
+        float: left;
+    }
+    .loadingBar{
+        display : block;
+        position : fixed;
+        z-index: 100;
+        background-image : url('http://loadinggif.com/images/image-selection/3.gif');
+        opacity : 0.4;
+        background-repeat : no-repeat;
+        background-position : center;
+        left : 0;
+        bottom : 0;
+        right : 0;
+        top : 0;
+    }
+    .modal-dialog{
+        overflow-y: initial !important;
+        max-height:95%;
+        margin-top: 4%;
+        margin-bottom:4%;
+    }
+    .modal-body{
+        height: 600px;
+        overflow-y: auto;
+    }
+
+    .ng-valid[required], .ng-valid.required {
+        border-left: 5px solid #42A948; /* green */
+    }
+
+    .ng-invalid:not(form) {
+        border-left: 5px solid #a94442; /* red */
+    }
+    label{
+        font-size: 13px;
+        font-weight: normal;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        color: #333;
+    }
+    .showhidepassword{
+        margin-top: 30px;
+    }
+    .paddingright0px{
+        padding-right: 0px;
+    }
+    .margintop-10px{
+        margin-top: -14px;
+    }
+    .paddingright12{
+        padding-right: 14px;
+    }
+    .paddingleft12{
+        padding-left: 14px;
+    }
+    .margintop-14px{
+        margin-top: -18px;
+    }
+    .margintop5px{
+        margin-top: 1px;
+    }
+    .margintop4px{
+        margin-top: 4px;
+    }
+    button{
+        padding: 2px 23px;
+    }
+
+    @media(max-width: 767px){
+        .modal-footer{
+            padding-top: 10px;
+        }
+        .modal-dialog{
+            overflow-y: initial !important;
+            max-height:85%;
+            margin-top: 4%;
+            margin-bottom:4%;
+        }
+        .modal-body{
+            height: 600px;
+            overflow-y: auto;
+        }
+        .ng-valid[required], .ng-valid.required {
+            border-left: 5px solid #42A948; /* green */
+        }
+
+        .ng-invalid:not(form) {
+            border-left: 5px solid #a94442; /* red */
+        }
+        label{
+            font-size: 13px;
+            font-weight: normal;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            color: #333;
+        }
+        .showhidepassword{
+            margin-top: 30px;
+        }
+        .paddingright0px{
+            padding-right: 15px;
+        }
+        .margintop-10px{
+            margin-top: -14px;
+        }
+        .paddingright12{
+            padding-right: 0px;
+        }
+        .paddingleft12{
+            padding-left: 0px;
+        }
+        .margintop-14px{
+            margin-top: 3px;
+        }
+        .margintop5px{
+            margin-top: 1px;
+        }
+        .margintop4px{
+            margin-top: 4px;
+        }
+        button{
+            padding: 2px 23px;
+        }
+    }
+
+    @media(min-height: 150px) and (max-height: 250px) {
+        .modal-dialog{
+            overflow-y: initial !important;
+            height:54%;
+            margin-top: 2%;
+            margin-bottom:2%;
+        }
+        .modal-body{
+            height: 50%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 251px) and (max-height: 300px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 69%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+        .modal-content{
+            height:120%;
+        }
+
+        .modal-body {
+            height: 45%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 301px) and (max-height: 350px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 52%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+        .modal-content{
+            height:163%;
+        }
+
+        .modal-body {
+            height: 55%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 351px) and (max-height: 400px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 90%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:96%;
+        }
+
+        .modal-body {
+            height: 61%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 401px) and (max-height: 450px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 91%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-content{
+            height:95%;
+        }
+        .modal-body {
+            height: 65%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 451px) and (max-height: 500px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 92%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:96%;
+        }
+
+
+        .modal-body {
+            height: 69%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 501px) and (max-height: 550px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:96%;
+        }
+
+        .modal-body {
+            height: 72%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 551px) and (max-height: 600px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:98%;
+        }
+
+        .modal-body {
+            height: 76%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 601px) and (max-height: 650px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:98%;
+        }
+        .modal-body {
+            height: 79%;
+            overflow-y: auto;
+        }
+    }@media(min-height: 651px) and (max-height: 700px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 80%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+    @media(min-height: 701px) and (max-height: 750px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 80%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+
+    @media(min-height: 751px) and (max-height: 800px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 81%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+
+    @media(min-height: 801px) and (max-height: 850px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 83%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+    @media(min-height: 851px) and (max-height: 900px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 85%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+
+    @media(max-width: 767px) and (max-height: 500px){
+        .modal-body{
+            height: 52%;
+        }
+    }
+</style>
+
+<form (submit) ="UpdateRoleOnClick()" name="mUpdateRole">
+    <div id="editRoleModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-controls-modal="editRoleModal" data-backdrop="static" data-keyboard="false" (keyup)="KeyUpp($event)">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" data-dismiss="modal" (click)="closeButtonOnModal()">&times;</button>
+                    <h3 class="modal-title">Edit Role</h3>
+                    <div style="display: none;">
+                        <button class="btn btn-primary" id="dismissModalButton"  data-dismiss="modal"></button>
+                    </div>
+
+                </div>
+                <div *ngIf="loadingIndicator" class="loadingBar">
+                    <!--<img src="app/img/loading.gif" height="56">-->
+                </div>
+                <div *ngIf="ShowMainDiv">
+                <div class="modal-body">
+                    <ng2-message2-area></ng2-message2-area>
+                    <div class="row col-sm-12"  style="margin-top: -19px">
+                        <h4 style="margin-bottom: -10px;">Role Info</h4>
+                        <hr>
+                    </div>
+
+                        <div class="row col-sm-12">
+
+                            <div class="row margintop4px">
+                                <div class="col-sm-6 ">
+                                    <div class="form-group paddingright14">
+                                        <label>Role Name</label>
+                                        <input class="form-control"
+                                               [(ngModel)]="role.RoleName"
+                                               name="mRoleName"
+                                               #mRoleName="ngModel"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Role Name"
+                                               required>
+                                        <div [hidden]="mRoleName.valid || mRoleName.pristine"
+                                             class="alert alert-danger">
+                                            Role Name is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <div class="form-group paddingleft14">
+                                        <label>Role Description</label>
+                                        <input [(ngModel)]="role.RoleDescription"
+                                               name="mRoleDescription"
+                                               type="text"
+                                               #mRoleDescription="ngModel"
+                                               class="form-control"
+                                               placeholder="Role Description"
+                                        >
+                                    </div>
+                                </div>
+                            </div> <!--row end-->
+
+
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 style="margin-bottom: -10px;">Assign Forms to Role</h4>
+                                    <hr>
+                                </div>
+                            </div> <!--row end-->
+
+                            <div class="row">
+                                <div class="col-sm-4" *ngFor="let r of Forms">
+                                    <div class="form-group">
+                                        <input type="checkbox" [checked]="IsFormSelected(r)" (click)="ToggleForm(r)"  style="margin-right: 5px; float: left;">
+                                        {{r.FormName | lowercase}}
+                                    </div>
+                                </div>
+                            </div><br><!--row end-->
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 style="margin-bottom: -10px;">Reports</h4>
+                                    <hr>
+                                </div>
+                            </div> <!--row end-->
+
+                            <div class="row">
+                                <div class="col-sm-4" *ngFor="let r of Reports">
+                                    <div class="form-group">
+                                        <input type="checkbox" [checked]="IsReportSelected(r)" (click)="ToggleReport(r)"  style="margin-right: 5px; float: left;">
+                                        {{r.Name | lowercase}}
+                                    </div>
+                                </div>
+                            </div><br><!--row end-->
+                        </div>
+
+
+                </div>
+                <div class="modal-footer">
+
+                                <button type="submit" class="btn btn-primary floatleft">
+                                    Update
+                                </button>
+
+
+                </div>
+                </div> <!--main row end-->
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+<div style="display: none;">
+    <button class="btn btn-primary" id="openEditRolesModal"  data-toggle="modal" data-target="#editRoleModal"></button>
+</div>
+
+
+
+
+
+

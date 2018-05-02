@@ -1,0 +1,81 @@
+@import 'node_modules/@angular/material/prebuilt-themes/indigo-pink';
+
+/* Master Styles */
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+.homeMarginTop{
+  margin-top: 28px;
+}
+.list-group-item{
+  cursor: pointer;
+}
+
+
+.clickable {
+  cursor: pointer;
+}
+
+.glyphicon-edit{
+  color: #2EA620;
+}
+
+.glyphicon-remove{
+  color: red;
+}
+
+.marginTop18 {
+  margin-top : 18px;
+}
+
+/*#parent{*/
+  /*margin-top: 228px;*/
+  /*margin-left: 110px;*/
+/*}*/
+
+#parent {
+  position:absolute;
+  top:22%;
+  right:0;
+  left:0;
+}
+
+.hoverIt{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  color: #333;
+}
+.hoverIt:hover{
+  cursor: pointer;
+}
+button{
+  padding: 4px 23px;
+}
+.table-bordered > tbody > tr > td,
+.table-bordered > thead > tr > td,
+.table-bordered > thead > tr > th,
+.table-bordered {
+  border-left:0;
+  border-right: 0;
+}
+.table-bordered > thead > tr > th,.table-bordered{
+  border-top:0;
+}
+.thcolor {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  color: #333;
+  font-weight: bold;
+  /*padding: 19px 8px;*/
+  border-top: none !important;
+}
+
+

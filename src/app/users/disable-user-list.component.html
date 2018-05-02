@@ -1,0 +1,127 @@
+<style>
+    .margintop-14{
+        margin-top: -14px;
+    }
+    button{
+        padding:5px 23px;
+    }
+    .thcolor {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        color: #333;
+        font-weight: bold;
+    }
+    .btn{
+        margin-top: -26px;
+    }
+
+    .marginTopMarginBottom {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    .loadingBar {
+        display: block;
+        position: fixed;
+        z-index: 100;
+        /*background-image : url('http://loadinggif.com/images/image-selection/3.gif');*/
+        background-image: url('../../app/img/fivi-mo.png');
+        /*opacity : 0.2;*/
+        background-repeat: no-repeat;
+        background-position: center;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 0;
+    }
+
+    .logoBelowMobilizeLogo {
+        display: block;
+        position: fixed;
+        z-index: 100;
+        background-image: url('../../app/img/logoOnMainPage.gif');
+        background-repeat: no-repeat;
+        background-position: center;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 80px;
+    }
+
+</style>
+
+<div (window:resize)="onResize($event)" >
+
+
+    <div *ngIf="loadingIndicator" class="loadingBar"></div>
+    <div *ngIf="loadingIndicator" class="logoBelowMobilizeLogo"></div>
+
+    <div *ngIf="ShowKendo">
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 marginTopMarginBottom">
+            <!--<button class="btn btn-primary" (click)="getDisableUser()"><i class="glyphicon glyphicon-refresh"></i> Refresh</button>-->
+            <button class="btn btn-success" (click)="newUserClick()" >New User</button>
+            <button class="btn btn-danger" (click)="enableUsersClick()">Enabled Users</button>
+        </div>
+    </div>
+</div>
+
+
+<kendo-grid
+        [data]="gridView"
+        [pageSize]="pageSize"
+        [skip]="skip"
+        [pageable]="true"
+        (pageChange)="pageChange($event)">
+    <kendo-grid-column field="Name" title="Name" width="200">
+        <template kendoCellTemplate let-dataItem let-column>
+            <div (click)="detailUserClick(dataItem)">
+                {{dataItem.Name}}
+            </div>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Email" title="Email" width="200">
+        <template kendoCellTemplate let-dataItem let-column>
+            <div (click)="detailUserClick(dataItem)">
+                {{dataItem.Email}}
+            </div>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="PhoneNo" title="Phone" width="200">
+        <template kendoCellTemplate let-dataItem let-column>
+            <div (click)="detailUserClick(dataItem)">
+                {{dataItem.PhoneNo}}
+            </div>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="OrganizationName" title="Organisation" width="200">
+        <template kendoCellTemplate let-dataItem let-column>
+            <div (click)="detailUserClick(dataItem)">
+                {{dataItem.OrganizationName}}
+            </div>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Edit"  title="Edit" width="100">
+        <template kendoCellTemplate let-dataItem>
+            <i class="glyphicon glyphicon-edit clickable"  (click)="editUserClick(dataItem)"></i>
+        </template>
+    </kendo-grid-column>
+</kendo-grid>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

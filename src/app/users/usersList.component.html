@@ -1,0 +1,245 @@
+
+<!--<div class="container-fluid table-responsive" style="margin-top: -16px;">-->
+    <!--<table class="table table-bordered table-hover ">-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th class="thcolor">Name</th>-->
+            <!--<th class="thcolor">Email</th>-->
+            <!--<th class="thcolor">Phone</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr *ngFor="let user of Users; let i = index" [style.backgroundColor]="i%2 == 0 ? '#f6f7fa' : '#fff'">-->
+            <!--<td class="hoverIt"(click)="detailUserClick(user)">{{ user.Name }}</td>-->
+            <!--<td class="hoverIt" (click)="detailUserClick(user)">{{ user.Email }}</td>-->
+            <!--<td class="hoverIt" (click)="detailUserClick(user)">{{ user.PhoneNo }}</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+<!--</div>-->
+
+<style>
+    .icon-addon {
+        position: relative;
+        color: #555;
+        display: block;
+    }
+
+    .icon-addon:after,
+    .icon-addon:before {
+        display: table;
+        content: " ";
+    }
+
+    .icon-addon:after {
+        clear: both;
+    }
+
+    .icon-addon.addon-md .glyphicon,
+    .icon-addon .glyphicon,
+    .icon-addon.addon-md .fa,
+    .icon-addon .fa {
+        position: absolute;
+        z-index: 2;
+        left: 10px;
+        font-size: 14px;
+        width: 20px;
+        margin-left: -2.5px;
+        text-align: center;
+        padding: 10px 0;
+        top: 1px
+    }
+
+    .icon-addon.addon-md .form-control,
+    .icon-addon .form-control {
+        padding-left: 30px;
+        float: left;
+        font-weight: normal;
+    }
+
+    /* glyphicon color change on hover */
+    .icon-addon .form-control:focus + .glyphicon,
+    .icon-addon:hover .glyphicon,
+    .icon-addon .form-control:focus + .fa,
+    .icon-addon:hover .fa {
+        color: #2580db;
+    }
+
+    button {
+        padding: 6px 23px;
+    }
+
+    .table-bordered > tbody > tr > td,
+    .table-bordered > thead > tr > td,
+    .table-bordered > thead > tr > th,
+    .table-bordered {
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .table-bordered > thead > tr > th, .table-bordered {
+        border-top: 0;
+    }
+
+    .thcolor {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        color: #333;
+        font-weight: bold;
+        /*padding: 19px 8px;*/
+        border-top: none !important;
+    }
+
+    .loadingBar {
+        display: block;
+        position: fixed;
+        z-index: 100;
+        /*background-image : url('http://loadinggif.com/images/image-selection/3.gif');*/
+        background-image: url('../../app/img/fivi-mo.png');
+        /*opacity : 0.2;*/
+        background-repeat: no-repeat;
+        background-position: center;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 0;
+    }
+
+    .logoBelowMobilizeLogo {
+        display: block;
+        position: fixed;
+        z-index: 100;
+        background-image: url('../../app/img/logoOnMainPage.gif');
+        background-repeat: no-repeat;
+        background-position: center;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 80px;
+    }
+
+    .marginTop-8 {
+        margin-top: -10px;
+    }
+
+    .marginTop-10 {
+        margin-top: -10px;
+    }
+
+    @media (max-width: 767px) {
+        .marginTop-8 {
+            margin-top: -2px;
+        }
+
+        .marginTop-10 {
+            margin-top: 4px;
+        }
+    }
+
+</style>
+
+
+
+
+<div (window:resize)="onResize($event)" >
+
+
+<div *ngIf="loadingIndicator" class="loadingBar"></div>
+<div *ngIf="loadingIndicator" class="logoBelowMobilizeLogo"></div>
+
+
+
+<div *ngIf="ShowKendo">
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 marginTop-8">
+            <!--<button class="btn btn-success" (click)="getUsers()"><i class="glyphicon glyphicon-refresh"></i>Refresh</button>-->
+            <!--<button class="btn btn-primary" [routerLink]="[{outlets:{'popup':['create']}}]" data-toggle="modal" data-target="#newUserModal">New User</button>-->
+            <button class="btn btn-primary" (click)="AddUser()">New User</button>
+            <button class="btn btn-danger" (click)="ShowDisabledUser()">Disabled Users</button>
+        </div>
+        <div class="col-sm-3 marginTop-10">
+            <div class="form-group">
+                <div class="icon-addon addon-md">
+                    <input type="text" placeholder="Search Users..." class="form-control" id="search" [(ngModel)]="searchString" (keyup)="change()">
+                    <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="Search Users"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<kendo-grid
+            [data]="gridView"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            [sortable]="{ mode: 'single' }"
+            [pageable]="true"
+            [height]="kendoHeight"
+            (pageChange)="pageChange($event)" id="rty"
+            [sort]="sort"
+            (sortChange)="sortChange($event)"
+            (groupChange)="groupChange($event)">
+    <kendo-grid-column field="Name" title="Name" width="230">
+        <template kendoDetailTemplate let-dataItem>
+            <section *ngIf="dataItem.Name">
+                <div let dataItem>
+                    <b><small>OrganizationName:</small></b> <small>{{dataItem.OrganizationName}}</small><br>
+                    <b><small>IsAdmin:</small></b> <small>{{dataItem.IsAdmin}}</small><br>
+                    <b><small>IsEnabled:</small></b> <small>{{dataItem.IsEnabled}}</small><br>
+                    <b><small>LoginId:</small></b> <small>{{dataItem.LoginId}}</small><br>
+                    <b><small>OrganizationId:</small></b> <small>{{dataItem.OrganizationId}}</small><br>
+                    <small>Assigned Roles :</small>
+                <div *ngFor="let f of dataItem.Roles">
+                    <b><small>Role Id:</small></b> <small>{{f.RoleId}}</small><br>
+                    <b><small>Role Name:</small></b> <small>{{f.RoleName}}</small><br>
+                </div>
+                </div>
+            </section>
+        </template>
+        <template kendoCellTemplate let-dataItem let-column let-rowIndex="rowIndex">
+            <div (click)="detailUserClick(dataItem)">
+                    {{dataItem.Name}}
+            </div>
+        </template>
+        <template kendoGridGroupHeaderTemplate let-value="value">
+            {{value}}
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Email" title="Email" width="220">
+        <template kendoCellTemplate let-dataItem let-column>
+            <div (click)="detailUserClick(dataItem)">
+                {{dataItem.Email}}
+            </div>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="PhoneNo" title="Phone" width="210">
+        <template kendoCellTemplate let-dataItem let-column>
+            <div (click)="detailUserClick(dataItem)">
+                {{dataItem.PhoneNo}}
+            </div>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Edit"  title="Edit" width="80">
+        <template kendoCellTemplate let-dataItem>
+            <i class="glyphicon glyphicon-edit clickable"  *ngIf="IsAdminLogin() || IsAdminUser(dataItem) == false"  (click)="editUserClick(dataItem)"></i>
+            </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Disable"  title="Disable" width="80">
+        <template kendoCellTemplate let-dataItem>
+            <i class="glyphicon glyphicon-remove clickable"  (click)="deleteUserClick(dataItem)"></i>
+        </template>
+    </kendo-grid-column>
+    <kendo-grid-column field="ResetPassword"  title="Reset Password" width="80">
+        <template kendoCellTemplate let-dataItem>
+            <i class="glyphicon glyphicon-repeat clickable" (click)="resetUserClick(dataItem)"></i>
+        </template>
+    </kendo-grid-column>
+</kendo-grid>
+
+</div>
+</div>

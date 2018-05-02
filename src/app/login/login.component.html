@@ -1,0 +1,324 @@
+<style>
+    .errorMessageStyle{
+        margin-right: 21px;
+        height: 33px;
+        margin-bottom: 1px;
+        padding-top: 6px;
+    }
+    .ng-valid[required], .ng-valid.required  {
+        border-left: 5px solid #42A948; /* green */
+    }
+    .ng-invalid:not(form)  {
+        border-left: 5px solid #a94442; /* red */
+    }
+    .loadingIndicatr{
+        margin-left: -21%;
+        margin-top: 3px;
+    }
+    label {
+        font-size: 13px;
+        font-weight: normal;
+    }
+    .btnMarginBotm6{
+        margin-bottom: 10px;
+        height: 31px;
+        background: #009ee1;
+        margin-left: 2px;
+    }
+    .logoMargin{
+        margin-top: 22px;
+        margin-bottom: 16px;
+    }
+    .emailHiddenDiv{
+        width: 300px;
+    }
+    .inputWidth{
+        width: 250px;
+        border: 1px solid rgba(0,0,0,0.2);
+        height: 30px;
+    }
+
+    .loginFormMarginLeft {
+        margin:auto;
+        margin-left: -129px;
+    }
+
+    .loginSyle{
+        border: 1px solid #ccc;
+        max-width: 500px;
+        min-width: 350px;
+        border-width: thin;
+        background: #fff;
+        border-radius: 5px;
+
+    }
+    .h3Margin{
+        margin-left: -1%;
+    }
+
+    @media (min-width: 620px) and (max-width: 767px) {
+        .loadingIndicatr{
+            margin-left: -45%;
+            margin-top: 3px;
+        }
+        .h3Margin{
+            margin-left: -1%;
+            margin-bottom: -5px;
+        }
+        #parent {
+            width: 80%;
+            margin-top: -1%;
+            margin-left: 13%;
+        }
+        .emailHiddenDiv{
+            width: 300px;
+        }
+
+        .loginFormMarginLeft {
+            margin-left:23%;
+        }
+        .logoMargin{
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        .btnMarginBotm6{
+            margin-bottom: 10px;
+            height: 31px;
+            background: #009ee1;
+            margin-left: 15px;
+        }
+    }
+
+    @media (min-width: 500px) and (max-width: 619px) {
+        .loadingIndicatr{
+            margin-left: -42%;
+            margin-top: 3px;
+        }
+        .h3Margin{
+            margin-left: -1%;
+            margin-bottom: -5px;
+        }
+        .logoMargin{
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        #parent {
+            width: 80%;
+            margin-top: -1%;
+            margin-left: 50px;
+        }
+        .emailHiddenDiv{
+            width: 300px;
+        }
+
+        .loginFormMarginLeft {
+            margin-left:19%;
+        }
+        .btnMarginBotm6{
+            margin-bottom: 10px;
+            height: 31px;
+            background: #009ee1;
+            margin-left: 15px;
+        }
+    }
+
+    @media (min-width: 421px) and (max-width: 499px) {
+        .loadingIndicatr{
+            margin-left: -40%;
+            margin-top: 3px;
+        }
+        .h3Margin{
+            margin-left: -1%;
+            margin-bottom: -5px;
+        }
+        .logoMargin{
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        #parent {
+            width: 80%;
+            margin-top: -1%;
+            margin-left: 40px;
+        }
+        .emailHiddenDiv{
+            width: 300px;
+        }
+
+        .loginFormMarginLeft {
+            margin-left: 38px;
+        }
+        .btnMarginBotm6{
+            margin-bottom: 10px;
+            height: 31px;
+            background: #009ee1;
+            margin-left: 15px;
+        }
+    }
+
+    @media (min-width: 350px) and (max-width: 420px) {
+        .loadingIndicatr{
+            margin-left: -37%;
+            margin-top: 3px;
+        }
+        .h3Margin{
+            margin-left: -1%;
+            margin-bottom: -5px;
+        }
+        .logoMargin{
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        #parent {
+            width: 80%;
+            margin-top: -1%;
+            margin-left: 36px;
+        }
+        .loginFormMarginLeft {
+            margin-left:5%;
+        }
+        .inputWidth{
+            width: 240px;
+        }
+        .emailHiddenDiv{
+            width: 230px;
+        }
+
+        .loginSyle{
+            border: 1px solid #ccc;
+            max-width: 335px;
+            min-width: 278px;
+            border-width: thin;
+            border-radius: 5px;
+        }
+        .h3Margin{
+            margin-left: 5%;
+        }
+        .btnMarginBotm6{
+            margin-bottom: 10px;
+            height: 31px;
+            background: #009ee1;
+            margin-left: 15px;
+        }
+
+    }
+
+    @media (max-width: 349px) {
+        .loadingIndicatr{
+            margin-left: -37%;
+            margin-top: 3px;
+        }
+        .h3Margin{
+            margin-left: -1%;
+            margin-bottom: -5px;
+        }
+        .logoMargin{
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        #parent {
+            width: 80%;
+            margin-top: -1%;
+            margin-left: 7%;
+
+        }
+        .inputWidth{
+            width: 230px;
+        }
+        .emailHiddenDiv{
+            width: 230px;
+        }
+
+        .loginFormMarginLeft {
+            margin:auto;
+            margin-left: 3%;
+        }
+
+        .loginSyle{
+            border: 1px solid #ccc;
+            max-width: 335px;
+            min-width: 278px;
+            border-width: thin;
+            border-radius: 5px;
+        }
+        .h3Margin{
+            margin-left: 5%;
+        }
+        .btnMarginBotm6{
+            margin-bottom: 10px;
+            height: 31px;
+            background: #009ee1;
+            margin-left: 15px;
+        }
+
+    }
+
+</style>
+<body style="background: #f6f7fa;">
+<div class="container loginSyle" id="parent">
+    <div class="col-sm-12 text-center">
+        <img src="app/img/mobilizeon.png" height="40" width="180" class="logoMargin"/>
+    </div>
+    <div class="row text-center">
+        <h4 class="h3Margin">Sign In</h4>
+    </div><br>
+    <form class="form-horizontal loginFormMarginLeft" (submit)="DoLogin()" name="mLogin" name="mLoginForm">
+        <div class="form-group">
+            <label for="email" class="col-sm-2 col-sm-offset-3 col-xs-10 control-label">Username</label>
+            <div class="col-sm-3 col-xs-10">
+                <input type="text"
+                       name="mEmail"
+                       [(ngModel)] = "user.email"
+                       #mEmail="ngModel"
+                       class="form-control inputWidth"
+                       id="email"
+                       placeholder="Username" [ngModelOptions]="{standalone: true}"
+                       (keydown)="disableErrorMessage()"
+                       required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 col-sm-offset-3 col-xs-10 control-label" style="margin-top: 1px">Password</label>
+            <div class="col-sm-3 col-xs-10">
+                <input type="password"
+                       [(ngModel)] = "user.password"
+                       #ctrl="ngModel"
+                       class="form-control inputWidth"
+                       id="password"
+                       placeholder="Password"
+                       [ngModelOptions]="{standalone: true}"
+                       (keydown)="disableErrorMessage()"
+                       required >
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+            <div class="col-sm-offset-5 col-sm-4 col-xs-8">
+                <button type="submit"
+                        class="btn btn-primary btnMarginBotm6">Sign In
+                </button>
+            </div>
+                <div class="col-xs-4 col-sm-2 loadingIndicatr" *ngIf="loadingIndicator">
+                    <img src="app/img/loading.gif" height="26">
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-11 col-sm-offset-2">
+
+            <div class="alert alert-danger text-center errorMessageStyle" *ngIf="errorMessage">
+               {{errorShow}}
+            </div>
+
+            <div class="alert alert-danger alert-dismissible text-center errorMessageStyle" role="alert" *ngIf="showGetUnauthorizedMessage">
+                {{logoutMessage}}
+            </div>
+
+        </div>
+    </form>
+</div>
+<m-hello>
+
+</m-hello>
+
+
+</body>

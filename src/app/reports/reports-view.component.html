@@ -1,0 +1,16 @@
+<style>
+    .powerbi-container {
+        height: 84%;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12" style="margin-bottom: 7px;">
+            <button class="btn btn-primary" (click)="reloadReport()"><i class="glyphicon glyphicon-refresh"></i> Refresh</button>
+            <button class="btn btn-success" (click)="printReport()">Print</button>
+        </div>
+    </div>
+</div>
+<div id="reportContainer" class="powerbi-container">
+
+</div>

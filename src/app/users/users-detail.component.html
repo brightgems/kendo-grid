@@ -1,0 +1,536 @@
+<style>
+    .floatleft{
+        float: left;
+    }
+    .onMobileMargintop20{
+        margin-top: 0px;
+    }
+
+    .loadingBar{
+        display : block;
+        position : fixed;
+        z-index: 100;
+        background-image : url('http://loadinggif.com/images/image-selection/3.gif');
+        opacity : 0.4;
+        background-repeat : no-repeat;
+        background-position : center;
+        left : 0;
+        bottom : 0;
+        right : 0;
+        top : 0;
+    }
+
+    .modal-dialog{
+        overflow-y: initial !important;
+        max-height:95%;
+        margin-top: 4%;
+        margin-bottom:4%;
+    }
+    .modal-body{
+        height: 600px;
+        overflow-y: auto;
+    }
+
+    .ng-valid[required], .ng-valid.required {
+        border-left: 5px solid #42A948; /* green */
+    }
+
+    .ng-invalid:not(form) {
+        border-left: 5px solid #a94442; /* red */
+    }
+    label{
+        font-size: 13px;
+        font-weight: normal;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        color: #333;
+    }
+    .showhidepassword{
+        margin-top: 30px;
+    }
+    .paddingright0px{
+        padding-right: 0px;
+    }
+    .margintop-10px{
+        margin-top: -14px;
+    }
+    .paddingright12{
+        padding-right: 14px;
+    }
+    .paddingleft12{
+        padding-left: 14px;
+    }
+    .margintop-14px{
+        margin-top: -18px;
+    }
+    .margintop5px{
+        margin-top: 1px;
+    }
+    .margintop4px{
+        margin-top: 4px;
+    }
+    button{
+        padding: 2px 23px;
+    }
+
+    @media(max-width: 767px){
+        .modal-footer{
+            padding-top: 10px;
+        }
+        .paddingleft15{
+            padding-left: 15px;
+        }
+        .onMobileMargintop20{
+            margin-top: 20px;
+        }
+        .modal-dialog{
+            overflow-y: initial !important;
+            max-height:85%;
+            margin-top: 4%;
+            margin-bottom:4%;
+        }
+        .modal-body{
+            height: 600px;
+            overflow-y: auto;
+        }
+        .ng-valid[required], .ng-valid.required {
+            border-left: 5px solid #42A948; /* green */
+        }
+
+        .ng-invalid:not(form) {
+            border-left: 5px solid #a94442; /* red */
+        }
+        label{
+            font-size: 13px;
+            font-weight: normal;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            color: #333;
+        }
+        .showhidepassword{
+            margin-top: 30px;
+        }
+        .paddingright0px{
+            padding-right: 15px;
+        }
+        .margintop-10px{
+            margin-top: -14px;
+        }
+        .paddingright12{
+            padding-right: 0px;
+        }
+        .paddingleft12{
+            padding-left: 0px;
+        }
+        .margintop-14px{
+            margin-top: 3px;
+        }
+        .margintop5px{
+            margin-top: 1px;
+        }
+        .margintop4px{
+            margin-top: 4px;
+        }
+        button{
+            padding: 2px 23px;
+        }
+    }
+
+    @media(min-height: 150px) and (max-height: 250px) {
+        .modal-dialog{
+            overflow-y: initial !important;
+            height:54%;
+            margin-top: 2%;
+            margin-bottom:2%;
+        }
+        .modal-body{
+            height: 50%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 251px) and (max-height: 300px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 69%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+        .modal-content{
+            height:120%;
+        }
+
+        .modal-body {
+            height: 45%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 301px) and (max-height: 350px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 52%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+        .modal-content{
+            height:163%;
+        }
+
+        .modal-body {
+            height: 55%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 351px) and (max-height: 400px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 90%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:96%;
+        }
+
+        .modal-body {
+            height: 61%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 401px) and (max-height: 450px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 91%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-content{
+            height:95%;
+        }
+        .modal-body {
+            height: 65%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 451px) and (max-height: 500px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 92%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:96%;
+        }
+
+
+        .modal-body {
+            height: 69%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 501px) and (max-height: 550px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:96%;
+        }
+
+        .modal-body {
+            height: 72%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 551px) and (max-height: 600px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:98%;
+        }
+
+        .modal-body {
+            height: 76%;
+            overflow-y: auto;
+        }
+    }
+    @media(min-height: 601px) and (max-height: 650px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+        .modal-content{
+            height:98%;
+        }
+        .modal-body {
+            height: 79%;
+            overflow-y: auto;
+        }
+    }@media(min-height: 651px) and (max-height: 700px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 80%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+    @media(min-height: 701px) and (max-height: 750px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 80%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+
+    @media(min-height: 751px) and (max-height: 800px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 81%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+
+    @media(min-height: 801px) and (max-height: 850px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 83%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+    @media(min-height: 851px) and (max-height: 900px) {
+        .modal-dialog {
+            overflow-y: initial !important;
+            height: 93%;
+            margin-top: 2%;
+            margin-bottom: 0%;
+        }
+
+        .modal-body {
+            height: 85%;
+            overflow-y: auto;
+        }
+        .modal-content{
+            height:100%;
+        }
+    }
+
+    @media(max-width: 767px) and (max-height: 500px){
+        .modal-body{
+            height: 52%;
+        }
+    }
+</style>
+
+
+
+
+<form (submit)="SaveUpdatedData()" name="mCreateUser">
+    <div id="detailUserModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="detailUserModal" data-controls-modal="editUserModal" data-backdrop="static" data-keyboard="false" (keyup)="KeyUpp($event)">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" data-dismiss="modal" (click)="closeButtonOnModal()">&times;</button>
+                    <h3 class="modal-title">User Detail</h3>
+                    <div style="display: none;">
+                        <button class="btn btn-primary" id="dismissModalButton"  data-dismiss="modal"> </button>
+                    </div>
+                </div>
+                <div *ngIf="loadingIndicator" class="loadingBar">
+                    <!--<img src="app/img/loading.gif" height="56">-->
+                </div>
+                <div *ngIf="ShowMainDiv">
+                <div class="modal-body">
+                    <div class="row col-sm-12">
+                        <h4 style="margin-bottom: -10px;">User Info</h4>
+                        <hr>
+                    </div>
+
+                        <div class="row col-sm-12">
+                            <div class="row margintop4px">
+                                <div class="col-sm-6 ">
+                                    <div class="form-group paddingright14">
+                                        <label>Login ID</label>
+                                        <input class="form-control"
+                                               [(ngModel)]="createuser.LoginId"
+                                               #ctrl="ngModel"
+                                               name="loginId"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Login Id"
+                                               [ngModelOptions]="{standalone: true}"
+                                               disabled>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <div class="form-group paddingleft14px">
+                                        <label>Name</label>
+                                        <input [(ngModel)]="createuser.Name"
+                                               name="mName"
+                                               type="text"
+                                               #mName="ngModel"
+                                               class="form-control"
+                                               placeholder="Name"
+                                               [ngModelOptions]="{standalone: true}"
+                                               disabled>
+                                        <div [hidden]="mName.valid || mName.pristine"
+                                             class="alert alert-danger">
+                                            Name is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!--row end-->
+
+                            <div class="row">
+                                <div class="col-sm-6 ">
+                                    <div class="form-group paddingright14">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="email"
+                                               [(ngModel)]="createuser.Email"
+                                               name="mEmail"
+                                               #mEmail="ngModel"
+                                               class="form-control"
+                                               id="exampleInputEmail1"
+                                               placeholder="Email"
+                                               [ngModelOptions]="{standalone: true}"
+                                               pattern="^[_.0-9a-zA-Z-]+@+[a-zA-Z]+[.]+(com|co.in)$"
+                                               disabled
+                                        >
+                                        <!--EMAIL VALIDATION-->
+                                        <div [hidden]="mEmail.valid || mEmail.pristine" class="alert alert-danger">
+                                            Invalid email
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 ">
+                                        <div class="form-group">
+                                            <label>Phone Number</label>
+                                            <div class="row">
+                                                <div class="col-sm-4 paddingright0">
+                                                    <select class="form-control" [(ngModel)]="createuser.CountryCode" name="mCallingCode"
+                                                            #mCallingCode="ngModel" disabled>
+                                                        <option *ngFor="let c of CountryCallingCodes" [ngValue]="c.value">{{c.key}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8 onMobileMargintop20">
+                                                    <input class="form-control"
+                                                           [(ngModel)]="createuser.PhoneNo"
+                                                           name="mPhone"
+                                                           #mPhone="ngModel"
+                                                           type="text"
+                                                           class="form-control"
+                                                           placeholder="Phone"
+                                                           maxlength="10"
+                                                           pattern="^[0-9]{10}$"
+                                                           [ngModelOptions]="{standalone: true}"
+                                                           disabled>
+                                                </div>
+                                            </div>
+                                            <div [hidden]="mPhone.valid || mPhone.pristine"
+                                                 class="alert alert-danger">
+                                                please enter valid phone number
+                                            </div>
+                                        </div>
+                                </div>
+                            </div> <!--row end -->
+
+
+                            <div class="row">
+                                <div class="col-sm-6 margintop5px">
+                                    <div class="form-group">
+                                        <label>Can save password on device ?</label>
+                                        <select class="form-control" [(ngModel)]="createuser.CanSavePassword" name="mCanSavePassword"
+                                                #mCanSavePassword="ngModel" disabled>
+                                            <option *ngFor="let c of userCanSavePasswordOptions" [ngValue]="c.value">{{c.key}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 paddingleft15">
+                                    <div class="form-group paddingleft14px">
+                                        <label>Enable</label>
+                                        <select class="form-control" [(ngModel)]="createuser.IsEnabled" name="mEnable" #mEnable="ngModel" disabled>
+                                            <option *ngFor="let option of isEnabledOptions" [ngValue]="option.value">{{option.key}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div><br> <!--row end -->
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 style="margin-bottom: -10px;">Roles List</h4>
+                                    <hr>
+                                </div>
+                            </div> <!--row end-->
+
+                            <div class="row">
+                                <div class="col-sm-4" *ngFor="let r of roles">
+                                    <div class="form-group from-inline">
+                                        <input type="checkbox" [checked]="IsRoleSelected(r)" (click)="ToggleRole(r)"  style="margin-right: 5px; float: left;" disabled>
+                                        {{r.RoleName | lowercase}}
+                                    </div>
+                                </div>
+                            </div> <!--row end-->
+                        </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary floatleft"  (click)="editUserClick(createuser)" *ngIf="IsAdminLogin() == true || IsAdminUser(createuser) == false">Edit</button>
+
+
+                </div>
+                </div> <!--main row end-->
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+<div style="display: none;">
+    <button class="btn btn-primary" id="openUserDetailModal"  data-toggle="modal" data-target="#detailUserModal"></button>
+</div>
+

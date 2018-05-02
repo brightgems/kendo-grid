@@ -1,0 +1,55 @@
+<style>
+    .hoverIt{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 13px;
+        color: #333;
+    }
+    .hoverIt:hover{
+        cursor: pointer;
+    }
+    button{
+        padding: 4px 23px;
+    }
+    .table-bordered > tbody > tr > td,
+    .table-bordered > thead > tr > td,
+    .table-bordered > thead > tr > th,
+    .table-bordered {
+        border-left:0;
+        border-right: 0;
+    }
+    .table-bordered > thead > tr > th,.table-bordered{
+        border-top:0;
+    }
+    .thcolor {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        color: #333;
+        font-weight: bold;
+        /*padding: 19px 8px;*/
+        border-top: none !important;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-sm-12">
+            <button class="btn btn-primary" (click)="RefreshReports()"><i class="glyphicon glyphicon-refresh"></i> Refresh</button>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="container-fluid table-responsive" style="margin-top: -16px;">
+    <table class="table table-bordered " >
+        <thead>
+        <tr>
+            <th class="thcolor">Report Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let report of reports">
+            <td class="hoverIt"><a style="cursor: pointer" (click)="NavigateToView(report)">{{ report.Name }}</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
